@@ -108,15 +108,14 @@ int main(){
 					break;
 				}
 				else{
-					printf("Az az első játékos átlal megadott oszlop: %s\n",buffer_p1);
-					send(player1_socket,buffer_p1,strlen(buffer_p1),0);
-					send(player1_socket,oszlop_1,sizeof(oszlop_1),0);
-
-
-
-					send(player2_socket,buffer_p2,strlen(buffer_p2),0);
 					printf("A második játékos átlal megadott oszlop: %s\n",buffer_p2);
+					send(player1_socket,buffer_p1,strlen(buffer_p1),0);
+					send(player2_socket,buffer_p2,strlen(buffer_p2),0);
+					printf("Az az első játékos átlal megadott oszlop: %s\n",buffer_p1);
 					
+					
+
+
 				}
 
 			}
