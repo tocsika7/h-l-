@@ -29,7 +29,7 @@ int main(){
 	char buffer_p1[1024];
 	char buffer_p2[1024];
 
-
+	int cleaner;
 
 	network_socket = socket(AF_INET,SOCK_STREAM,0);
 
@@ -51,7 +51,7 @@ int main(){
 
 	
 		
- for(;;){
+for(;;){
 	while((strcmp(buffer_p1,"feladom")!=0)&&(strcmp(buffer_p2,"feladom")!=0)){
 		
 		
@@ -67,7 +67,9 @@ int main(){
 				printf("Disconected from the server!\n");
 				exit(1);
 				}
+		printf("Várakozás a másik játékosra\n");
 		send(network_socket,buffer_p1,strlen(buffer_p1),0);
+
 
 
 		
@@ -82,51 +84,12 @@ int main(){
 		else{
 			printf("1. Oszlop: %s\n",buffer_p1);
 
-		recv(player_socket,oszlop_1,sizeof(oszlop_1),0);		
 
-		for(int i=0;i<6;i++){
-			printf("%c\n",oszlop_1[i]);
-		}
-
-
-		printf("Várakozás a másik játékosra\n");
-		}
-
-
-
-		printf("Add meg az oszlopot!\n");
-		scanf("%s",&buffer_p2[0]);
-		while((strcmp(buffer_p2,"1")!=0)&&(strcmp(buffer_p2,"2")!=0)&&(strcmp(buffer_p2,"3")!=0)&&(strcmp(buffer_p2,"4")!=0)&&(strcmp(buffer_p2,"5")!=0)&&(strcmp(buffer_p2,"6")!=0)&&(strcmp(buffer_p2,"7")!=0)&&(strcmp(buffer_p2,"feladom")!=0)){
-			printf("Rossz oszlopszámot adtál meg! 1-7-ig add meg az oszlopszámot!\n");
-			scanf("%s",&buffer_p2[0]);
-			}
-		if(strcmp(buffer_p2,"feladom")==0){
-				close(network_socket);
-				printf("Disconected from the server!\n");
-				exit(1);
-				}
-		send(network_socket,buffer_p2,strlen(buffer_p2),0);
-		printf("Várakozás a másik játékosra\n");
-
-
-		if(recv(network_socket,buffer_p2,1024,0)<0){
-		printf("Error in recieving data.\n");
-		}
-		else{
-			printf("2. Oszlop: %s\n",buffer_p2);
-		}
-
-
-
-
-	}	
-
-	
-		
 
 		
+		}
+		}
 	}
-
 
 
 
